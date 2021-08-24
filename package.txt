@@ -1,2 +1,2 @@
-pandas
-scikit-learn
+apt-get install python3-pandas
+apt-get install scikit-learn
