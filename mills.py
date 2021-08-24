@@ -71,5 +71,23 @@ def valores():
 valor_teste = valores()
 
 st.write(modelo.predict(valor_teste))
+st.dataframe(pd.DataFrame(modelo.predict_proba(valor_teste), columns = df['Equipamento'].unique()))
 
-if modelo.predict(valor_teste) == ""
+if modelo.predict(valor_teste) == "Plataforma de Lança Articulada":
+    st.image('./plataforma aerea de lanca articulada.jpg')
+    st.write('link')
+elif modelo.predict(valor_teste) =='Plataforma de Lança Telescópica':
+    st.image('./plataforma aerea de lanca telescopica.png')
+    st.write('link')
+elif modelo.predict(valor_teste) == 'Plataforma de Trabalho Aéreo':
+    st.image('./plataforma aerea de lanca telescopica.png')
+    st.write('link')
+elif modelo.predict(valor_teste) == 'Plataforma Tesoura a Diesel':
+    st.image('./plataforma aerea de lanca telescopica.png')
+    st.write('link')
+elif modelo.predict(valor_teste) == 'Plataforma Tesoura Diesel':
+    st.image('./plataforma aerea de lanca telescopica.png')
+    st.write('link')
+elif modelo.predict(valor_teste) == 'Plataforma Tesoura Elétrica':
+    st.image('./plataforma aerea de lanca telescopica.png')
+    st.write('link')
