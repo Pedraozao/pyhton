@@ -1,1 +1,55 @@
+import pandas as pd
+import requests as rq
+from bs4 import BeautifulSoup
 
+
+
+##funções
+#essa função pega o url e conecta no site pegando o html todo. Funciona com xml também, mas tem que trocar o parser
+
+
+def connect(x):
+    r = rq.get(x)
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.text,'html.parser')
+        return soup
+    else:
+        return r.status_code
+        
+        
+#Description pega a descrição do site (pode ser melhorada)
+def description(x):
+    
+    for i in x.head.find_all('meta'):
+        if i.has_attr('name'):
+            if i['name'] == 'description':
+                desc =i['content']
+                
+                return desc
+                
+                
+# Titulo retorna o titulo do site
+def title(y):
+    title = y.head('title')
+    return title[0].string
+
+#H1 retorna quantos h1 tem
+def h1(x):
+    body = x.body
+    return len(body.findAll('h1'))
+
+#LInks retorna quantos links tem na página 
+def links(x):
+    body = x.body
+    return len(a.body.findAll('a'))
+
+
+
+df = df.DataFrame(url,  columns=['url'])
+df['soup'] = df['url'].apply(connect)
+df['title'] = df['soup'].apply(title)
+df['description'] = df['soup'].apply(description)
+df['h1'] = df['soup'].apply(h1)
+df['links'] = df['soup'].apply(links)
+
+ 
